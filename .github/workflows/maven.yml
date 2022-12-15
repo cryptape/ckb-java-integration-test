@@ -33,14 +33,14 @@ jobs:
       run: mvn clean test -Dmaven.test.failure.ignore=true site
       continue-on-error: true
       id: allure-report
-        with:
-          ref: main
-          path: main
-          allure_results: target/allure-results
-          gh_pages: main
-          allure_report: allure-report
-          allure_history: allure_history
-        env:
-          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN}}
-          PUBLISH_BRANCH: main
-          PUBLISH_DIR: allure-history
+      with:
+        ref: main
+        path: main
+        allure_results: target/allure-results
+        gh_pages: main
+        allure_report: allure-report
+        allure_history: allure_history
+      env:
+        PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+        PUBLISH_BRANCH: main
+        PUBLISH_DIR: allure-history
