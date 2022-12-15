@@ -2,6 +2,9 @@ package feature.rpc;
 
 import com.ckb.base.BeforeSuite;
 import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import io.restassured.response.Response;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
@@ -18,9 +21,10 @@ public class getBlockTest extends BeforeSuite {
     public static org.apache.log4j.Logger logger = Logger.getLogger(getBlockTest.class);
     public static final String url = CKB_MAINNET;
     @Test(dataProvider = "get_block")
-    @Description("get_block(block_hash, verbosity, with_cycles)")
+    @Severity(SeverityLevel.BLOCKER)
+    @Feature("rpc")
     public void TestGetBlock(Map<String, Object> body){
-        logger.info("begin...");
+        logger.info("get_block(block_hash, verbosity, with_cycles)");
         Response response = post(url, getHeaders(), body);
         Assert.assertEquals(200, response.getStatusCode());
         System.out.println("result:" + getValueByJsonPath(response, "result"));
