@@ -30,7 +30,7 @@ jobs:
 
     - name: Run Test
       if: always()
-      run: mvn clean test
+      run: mvn clean test -Dmaven.test.failure.ignore=true site
       continue-on-error: true
 
     - name: Get Allure history
@@ -41,9 +41,9 @@ jobs:
         ref: main
         path: main
 
-    - name: Allure Report action from marketplace
-        uses: simple-elf/allure-report-action@master
+    - name: Allure Report action from marketpla
         if: always()
+        run: mvn io.qameta.allure:allure-maven:serve && mvn io.qameta.allure:allure-maven:report
         id: allure-report
         with:
           allure_results: target/allure-results
@@ -53,7 +53,6 @@ jobs:
 
     - name: Deploy report to Github Pages
         if: always()
-        uses: peaceiris/actions-main@v2
         env:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN}}
           PUBLISH_BRANCH: main
