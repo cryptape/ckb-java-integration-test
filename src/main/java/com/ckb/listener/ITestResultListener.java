@@ -4,13 +4,6 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import java.util.Arrays;
 
-/**
- * @ClassNAME ITestResult
- * @Description ItestResult 获取上一个方法的状态
- * @Author tangyx
- * @Date 2022/7/25 6:51 PM
- * @Version 1.0
- */
 public class ITestResultListener {
 
     @AfterMethod

@@ -3,15 +3,6 @@ package com.ckb.listener;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 
-import java.util.Arrays;
-
-/**
- * @ClassNAME ITestListener
- * @Description TODO 测试方法监听
- * @Author tangyx
- * @Date 2022/7/25 7:29 PM
- * @Version 1.0
- */
 public class ITestListenerDefined implements org.testng.ITestListener {
     @Override
     public void onTestStart(ITestResult iTestResult) {

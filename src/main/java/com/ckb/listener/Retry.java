@@ -2,14 +2,6 @@ package com.ckb.listener;
 
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
-
-/**
- * @ClassNAME RetryLister
- * @Description TODO  失败用例重跑
- * @Author tangyx
- * @Date 2022/7/25 8:07 PM
- * @Version 1.0
- */
 public class Retry implements IRetryAnalyzer {
     private int retryCount=0;
 
