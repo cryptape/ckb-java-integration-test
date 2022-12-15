@@ -31,14 +31,6 @@ jobs:
       if: always()
       run: mvn clean test -Dmaven.test.failure.ignore=true
       continue-on-error: true
-      
-    - name: Get Allure history
-        uses: actions/checkout@v3
-        if: always()
-        continue-on-error: true
-        with:
-          ref: main
-          path: main
 
     - name: Allure Report action from marketplace
         uses: simple-elf/allure-report-action@master
