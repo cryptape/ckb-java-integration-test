@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.ckb</groupId>
-    <artifactId>ckb-rpc-testing</artifactId>
+    <artifactId>ckb-java-integration-test</artifactId>
     <version>1.0</version>
 
 
-    <name>ckb-rpc-testing</name>
+    <name>ckb-java-integration-test</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
     <properties>

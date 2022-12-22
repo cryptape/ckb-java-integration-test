@@ -8,6 +8,11 @@
     <test name="Test">
         <classes>
             <class name="feature.rpc.getBlockTest"/>
+<!--            <class name="feature.rpc.v0106.estimateCyclesTest"/>-->
+<!--            <class name="feature.rpc.v0106.getBlockByNumberTest"/>-->
+<!--            <class name="feature.rpc.v0106.getBlockTest"/>-->
+<!--            <class name="feature.rpc.v0106.getFeeRateStaticsTest"/>-->
+<!--            <class name="feature.rpc.v0106.getTransactionTest"/>-->
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->

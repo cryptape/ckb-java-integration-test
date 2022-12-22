@@ -44,7 +44,7 @@ public class getBlockTest extends BeforeSuite {
         };
     }
 
-    @Test(retryAnalyzer = Retry.class)
+    @Test(retryAnalyzer = Retry.class, enabled = false)
     public void TestGetBlockBySdk() throws Exception{
         byte[] blockHash = Numeric.hexStringToByteArray("0xa5f5c85987a15de25661e5a214f2c1449cd803f071acc7999820f25246471f40");
         Block block = getApi(url, false).getBlock(blockHash);
