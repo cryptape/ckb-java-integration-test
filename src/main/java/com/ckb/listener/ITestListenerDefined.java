@@ -1,7 +1,10 @@
 package com.ckb.listener;
 
 import org.testng.ITestContext;
+import org.testng.ITestNGMethod;
 import org.testng.ITestResult;
+
+import java.util.Iterator;
 
 public class ITestListenerDefined implements org.testng.ITestListener {
     @Override
@@ -37,7 +40,23 @@ public class ITestListenerDefined implements org.testng.ITestListener {
     }
 
     @Override
-    public void onFinish(ITestContext iTestContext) {
-
+    public void onFinish(ITestContext context) {
+        Iterator<ITestResult> listOfFailedTests=context.getFailedTests().getAllResults().iterator();
+        while(listOfFailedTests.hasNext())
+        {
+            ITestResult failedTest=listOfFailedTests.next();
+            ITestNGMethod method=failedTest.getMethod();
+            if(context.getFailedTests().getResults(method).size()>1)
+            {
+                listOfFailedTests.remove();
+            }else
+            {
+                if(context.getPassedTests().getResults(method).size()>0)
+                {
+                    listOfFailedTests.remove();
+                }
+            }
+        }
     }
+
 }

@@ -2,6 +2,11 @@ package com.ckb.base;
 
 import com.alibaba.fastjson.JSONObject;
 import io.restassured.response.Response;
+import org.nervos.ckb.service.Api;
+import org.nervos.ckb.service.RpcService;
+
+import javax.validation.groups.Default;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -12,8 +17,13 @@ public class BeforeSuite {
     /**
      * 环境地址
      */
+    public static String INDEXER_URL;
+    public static String MERCURY_URL;
+    public static String CKB_URL;
     public static String CKB_MAINNET;
     public static String CKB_TESTNET;
+
+    public static String CKB_DEVNET;
 
     public static String GW_DEVNET_V1;
 
@@ -32,8 +42,14 @@ public class BeforeSuite {
         GW_ALPHANET_V1 = resource.getString("GW_ALPHANET_V1");
         LOCAL_ETH = resource.getString("LOCAL_ETH");
         GW_TESTNET_V1 = resource.getString("GW_TESTNET_V1");
+        CKB_URL = resource.getString("CKB_URL");
+        INDEXER_URL = resource.getString("INDEXER_URL");
+        MERCURY_URL = resource.getString("MERCURY_URL");
+        CKB_DEVNET = resource.getString("CKB_DEVNET");
     }
-
+    public static Api getApi(String rpcUrl, boolean isDebug){
+        return new Api(new RpcService(rpcUrl, isDebug));
+    }
     public Map<String, Object> getHeaders() {
         Map<String, Object> headers = new HashMap<>(6);
         headers.put("Content-Type", "application/json");

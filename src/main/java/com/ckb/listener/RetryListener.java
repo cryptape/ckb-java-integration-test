@@ -6,12 +6,13 @@ import java.lang.reflect.Method;
 import org.testng.IAnnotationTransformer;
 import org.testng.IRetryAnalyzer;
 import org.testng.annotations.ITestAnnotation;
+import org.testng.internal.annotations.DisabledRetryAnalyzer;
 
 public class RetryListener implements IAnnotationTransformer {
-    public void transform(ITestAnnotation annotation, Class testClass,
-                          Constructor testConstructor, Method testMethod) {
-        IRetryAnalyzer retry = annotation.getRetryAnalyzer();
-        if (retry == null) {
+    @Override
+    public void transform(ITestAnnotation annotation, Class testClass, Constructor testConstructor, Method testMethod) {
+        Class<? extends IRetryAnalyzer> retry = annotation.getRetryAnalyzerClass();
+        if (retry == DisabledRetryAnalyzer.class) {
             annotation.setRetryAnalyzer(Retry.class);
         }
     }

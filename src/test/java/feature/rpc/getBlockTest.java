@@ -1,15 +1,17 @@
 package feature.rpc;
 
 import com.ckb.base.BeforeSuite;
-import io.qameta.allure.Description;
+import com.ckb.listener.Retry;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.restassured.response.Response;
 import org.apache.log4j.Logger;
+import org.nervos.ckb.type.Block;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import org.web3j.utils.Numeric;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -27,7 +29,7 @@ public class getBlockTest extends BeforeSuite {
         logger.info("get_block(block_hash, verbosity, with_cycles)");
         Response response = post(url, getHeaders(), body);
         Assert.assertEquals(200, response.getStatusCode());
-        System.out.println("result:" + getValueByJsonPath(response, "result"));
+        Assert.assertNull(getValueByJsonPath(response, "result"));
     }
 
     @DataProvider(name = "get_block")
@@ -42,4 +44,10 @@ public class getBlockTest extends BeforeSuite {
         };
     }
 
+    @Test(retryAnalyzer = Retry.class)
+    public void TestGetBlockBySdk() throws Exception{
+        byte[] blockHash = Numeric.hexStringToByteArray("0xa5f5c85987a15de25661e5a214f2c1449cd803f071acc7999820f25246471f40");
+        Block block = getApi(url, false).getBlock(blockHash);
+        Assert.assertNull(block);
+    }
 }

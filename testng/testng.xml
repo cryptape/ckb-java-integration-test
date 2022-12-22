@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="ChainTest">
-    <test verbose="1" name="ChainTest">
+<suite name="Suite">
+    <listeners>
+        <listener class-name="com.ckb.listener.RetryListener" />
+        <listener class-name="com.ckb.listener.ITestListenerDefined" />
+    </listeners>
+    <test name="Test">
         <classes>
-           <class name="feature.rpc.getBlockTest"/>
+            <class name="feature.rpc.getBlockTest"/>
         </classes>
-    </test>
-</suite>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->
