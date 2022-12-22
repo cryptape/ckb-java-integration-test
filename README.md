@@ -1,5 +1,5 @@
-# ckb_rpc_testing
-## maven + testng
+# ckb-java-integration-test
+## maven + testng + allure
 **例子**
 - 由于sdk通常要等正式版发布之后, 才会发新版本，所以先打包javasdk的develop分支，导入到该集成测试项目做本地测试
 
@@ -12,6 +12,7 @@ public void TestGetBlock(byte[] blockHash)throws Exception{
 Block block = apiService.getBlock(blockHash);
 Assert.assertNotNull(block.transactions);
 }
+
 @DataProvider(name = "getBlockHash")
 public Object[][] getBlockHash() throws Exception{
 byte[] blockHash = apiService.getBlockHash(1);
