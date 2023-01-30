@@ -1,26 +1,22 @@
-package feature.rpc;
+package feature.rpc.mock;
 
 import com.ckb.base.BeforeSuite;
-import com.ckb.listener.Retry;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.restassured.response.Response;
 import org.apache.log4j.Logger;
-import org.nervos.ckb.type.Block;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import org.web3j.utils.Numeric;
-
 import java.util.ArrayList;
 import java.util.Map;
 
 import static com.ckb.utils.HttpUtils.post;
 
 
-public class getBlockTest extends BeforeSuite {
-    public static org.apache.log4j.Logger logger = Logger.getLogger(getBlockTest.class);
+public class getBlockMockTest extends BeforeSuite {
+    public static org.apache.log4j.Logger logger = Logger.getLogger(getBlockMockTest.class);
     public static final String url = CKB_MAINNET;
     @Test(dataProvider = "get_block")
     @Severity(SeverityLevel.BLOCKER)
@@ -42,12 +38,5 @@ public class getBlockTest extends BeforeSuite {
         return new Object[][]{
                 {requestBody},
         };
-    }
-
-    @Test(retryAnalyzer = Retry.class, enabled = false)
-    public void TestGetBlockBySdk() throws Exception{
-        byte[] blockHash = Numeric.hexStringToByteArray("0xa5f5c85987a15de25661e5a214f2c1449cd803f071acc7999820f25246471f40");
-        Block block = getApi(url, false).getBlock(blockHash);
-        Assert.assertNull(block);
     }
 }
