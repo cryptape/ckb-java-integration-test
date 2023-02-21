@@ -150,12 +150,4 @@ public class getTransactionTest extends BeforeSuite {
                 {sendCkbTxHash}
         };
     }
-
-    @Test
-    public void getCkbAddressByGodWokenPriKey(){
-        System.out.println("priKey:" + ECKeyPair.create("f332e1f5bdf5d9d7ddcbde404bc2aa7a09e1f508fe17949ada2d43ee22bb3428").getPrivateKey());
-        Script script = Script.generateSecp256K1Blake160SignhashAllScript(ECKeyPair.create("f332e1f5bdf5d9d7ddcbde404bc2aa7a09e1f508fe17949ada2d43ee22bb3428").getPublicKey().toByteArray());
-        Address newAddress = new org.nervos.ckb.utils.address.Address(script, Network.TESTNET);
-        System.out.println(newAddress);
-    }
 }
