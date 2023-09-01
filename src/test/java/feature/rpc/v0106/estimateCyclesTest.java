@@ -2,6 +2,8 @@ package feature.rpc.v0106;
 
 import com.ckb.base.BeforeSuite;
 import com.ckb.listener.Retry;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
@@ -19,13 +21,15 @@ import java.io.IOException;
 
 public class estimateCyclesTest extends BeforeSuite {
     public static final String url = CKB_DEVNET;
-    public static final Api apiService = getApi(url, true);
+    public static final Api apiService = getApi(url, false);
 
     @Test(retryAnalyzer = Retry.class, dataProvider = "getTx")
     @Description("estimateCycles")
     @Severity(SeverityLevel.BLOCKER)
     @Feature("rpc")
     public void TestEstimateCycles(Transaction tx)throws Exception{
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        System.out.println("[debug]:" + gson.toJson(tx));
         Cycles cycles = apiService.estimateCycles(tx);
         System.out.println(cycles.cycles);
         Assert.assertEquals(0, cycles.cycles);
