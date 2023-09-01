@@ -29,7 +29,7 @@ jobs:
 
     - name: Run Test
       if: always()
-      run: ｜
+      run:
         sh prepare.sh
         mvn clean test -Dmaven.test.failure.ignore=true
       continue-on-error: true
