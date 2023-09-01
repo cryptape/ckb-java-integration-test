@@ -27,9 +27,6 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - name: Run Test
-      if: always()
+    - name: Run tests
       run:
-        sh prepare.sh
-        mvn clean test -Dmaven.test.failure.ignore=true
-      continue-on-error: true
+          sh prepare.sh && mvn clean test -Dmaven.test.failure.ignore=true
