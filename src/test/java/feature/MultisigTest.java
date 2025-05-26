@@ -16,6 +16,7 @@ import org.nervos.ckb.sign.signer.Secp256k1Blake160MultisigAllSigner;
 import org.nervos.ckb.transaction.CkbTransactionBuilder;
 import org.nervos.ckb.transaction.TransactionBuilderConfiguration;
 import org.nervos.ckb.type.MultisigVersion;
+import org.nervos.ckb.type.OutputsValidator;
 import org.nervos.ckb.type.Script;
 import org.nervos.ckb.type.TransactionInput;
 import org.nervos.ckb.utils.Numeric;
@@ -28,7 +29,7 @@ import java.io.IOException;
 import java.util.Iterator;
 
 public class MultisigTest extends BeforeSuite {
-    public static final String url = CKB_DEVNET;
+    public static final String url = CKB_TESTNET;
     public static final Api apiService = getApi(url, false);
     
     @Test(retryAnalyzer = Retry.class, dataProvider = "getMultisigVersions")
