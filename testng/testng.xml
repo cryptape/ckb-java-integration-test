@@ -16,7 +16,7 @@
             <class name="feature.rpc.v0107.verifyTransactionAndWitnessProof"></class>
             <class name="feature.rpc.v0108.indexerSearchModeTest"></class>
             <class name="feature.rpc.v0108.packedRpcTest"></class>
-            <class name="feature.MultisigTest.java"></class>
+            <class name="feature.MultisigTest"></class>
             
         </classes>
     </test> <!-- Test -->
