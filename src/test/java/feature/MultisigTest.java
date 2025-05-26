@@ -61,7 +61,7 @@ public class MultisigTest extends BeforeSuite {
         signer.signTransaction(txWithGroups, new Context("0x4fd809631a6aa6e3bb378dd65eae5d71df895a82c91a615a1e8264741515c79c", multisigScript));
         signer.signTransaction(txWithGroups, new Context("0x7438f7b35c355e3d2fb9305167a31a72d22ddeafb80a21cc99ff6329d92e8087", multisigScript));
 
-        byte[] txHash = apiService.sendTransaction(txWithGroups.getTxView());
+        byte[] txHash = apiService.testTxPoolAccept(txWithGroups.getTxView(), OutputsValidator.WELL_KNOWN_SCRIPTS_ONLY);
         String txHashHex = Numeric.toHexString(txHash);
         System.out.println("Transaction hash: " + txHashHex);
         
