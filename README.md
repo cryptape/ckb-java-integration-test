@@ -1,39 +1,39 @@
 # ckb-java-integration-test
 
-## 项目介绍
+## Project Introduction
 
-这是一个基于Maven + TestNG + Allure的CKB Java SDK集成测试项目，用于验证CKB Java SDK的功能和性能。
+This is a CKB Java SDK integration testing project based on Maven + TestNG + Allure, used to verify the functionality and performance of the CKB Java SDK.
 
-## 技术栈
+## Technology Stack
 
-- Maven：项目构建和依赖管理
-- TestNG：测试框架
-- Allure：测试报告生成工具
-- CKB Java SDK：Nervos CKB的Java开发工具包
+- Maven: Project building and dependency management
+- TestNG: Testing framework
+- Allure: Test report generation tool
+- CKB Java SDK: Java development toolkit for Nervos CKB
 
-## 本地验证SDK临时分支步骤
+## Steps to Verify SDK Temporary Branch Locally
 
-### 准备工作
+### Preparation
 
-1. 克隆测试项目
+1. Clone the test project
    ```bash
    git clone https://github.com/15168316096/ckb-java-integration-test.git -b newmultisign
    cd ckb-java-integration-test
    ```
 
-2. 在测试项目根目录克隆SDK项目作为依赖
+2. Clone the SDK project as a dependency in the test project root directory
    ```bash
    git clone https://github.com/eval-exec/ckb-sdk-java.git -b exec/fix-multisig
    ```
 
-3. 打包ckb-sdk-java生成jar包
+3. Package ckb-sdk-java to generate jar file
    ```bash
    cd ckb-sdk-java
    ./gradlew clean :ckb:shadowJar
    cd ..
    ```
 
-4. 确认pom.xml中的依赖配置正确
+4. Confirm the dependency configuration in pom.xml is correct
    ```xml
    <dependency>
        <groupId>org.nervos.ckb</groupId>
@@ -44,33 +44,33 @@
    </dependency>
    ```
 
-5. 编译测试项目
+5. Compile the test project
    ```bash
    mvn clean compile
    ```
 
-6. 运行测试
+6. Run the tests
    ```bash
    mvn test
    ```
 
-## 项目结构
+## Project Structure
 
 ```
 ckb-java-integration-test/
 ├── src/
 │   ├── main/java/com/ckb/
-│   │   ├── base/         # 基础类和配置
-│   │   ├── cases/        # 测试用例
-│   │   ├── utils/        # 工具类
-│   ├── resources/        # 资源文件
-├── testng/               # TestNG配置文件
-├── allure-results/       # Allure测试结果
-├── pom.xml               # Maven配置
-└── README.md             # 项目说明
+│   │   ├── base/         # Base classes and configurations
+│   │   ├── cases/        # Test cases
+│   │   ├── utils/        # Utility classes
+│   ├── resources/        # Resource files
+├── testng/               # TestNG configuration files
+├── allure-results/       # Allure test results
+├── pom.xml               # Maven configuration
+└── README.md             # Project description
 ```
 
-## 测试示例
+## Test Example
 
 ```java
 @Test(retryAnalyzer = Retry.class, dataProvider = "getBlockHash")
@@ -86,7 +86,7 @@ public void TestGetBlock(byte[] blockHash) throws Exception {
 @DataProvider(name = "getBlockHash")
 public Object[][] getBlockHash() throws Exception {
     byte[] blockHash = apiService.getBlockHash(1);
-    //verbosity应该是一开始就没放进去的。verbosity取值不同，返回的类型就不一样，没法放在同一个方法里。
+    //verbosity should not have been included initially. Different verbosity values return different types, can't be placed in the same method.
     return new Object[][] {
         {blockHash},
         //                {blockHash, null},
@@ -96,46 +96,47 @@ public Object[][] getBlockHash() throws Exception {
 }
 ```
 
-## 生成测试报告
+## Generate Test Report
 
-完成测试后，可以使用以下命令生成Allure测试报告：
+After completing the tests, you can use the following command to generate an Allure test report:
 
 ```bash
 mvn allure:report
 ```
 
-报告将生成在`target/site/allure-maven-plugin`目录下。
+The report will be generated in the `target/site/allure-maven-plugin` directory.
 
-## 常见问题
+## Common Issues
 
-### 1. 依赖问题
+### 1. Dependency Issues
 
-如果遇到依赖问题，可以尝试以下命令重新加载依赖：
+If you encounter dependency issues, you can try the following command to reload dependencies:
 
 ```bash
 mvn clean install -U
 ```
 
-### 2. 测试失败
+### 2. Test Failures
 
-如果测试失败，请检查：
+If tests fail, please check:
 
-- CKB节点是否正常运行
-- 配置文件中的URL和参数是否正确
-- SDK版本是否兼容
+- Whether the CKB node is running normally
+- Whether the URLs and parameters in the configuration file are correct
+- Whether the SDK version is compatible
 
-## 贡献指南
+## Contribution Guidelines
 
-1. Fork 项目
-2. 创建特性分支 (`git checkout -b feature/amazing-feature`)
-3. 提交更改 (`git commit -m 'Add some amazing feature'`)
-4. 推送到分支 (`git push origin feature/amazing-feature`)
-5. 创建Pull Request
+1. Fork the project
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Create a Pull Request
 
-## 许可证
+## License
 
-本项目采用 MIT 许可证 - 详情请参阅 LICENSE 文件
+This project is licensed under the MIT License - see the LICENSE file for details
 
-## 联系方式
+## Contact
 
-如有问题，请通过GitHub Issues提交。
+If you have any questions, please submit them through GitHub Issues.
+        
