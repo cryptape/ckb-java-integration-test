@@ -74,7 +74,7 @@ public class MultisigTest extends BeforeSuite {
     public Object[][] getMultisigVersions() {
         return new Object[][] {
             {MultisigVersion.Legacy, 50100000000L},
-            // {MultisigVersion.V2, 50100000001L}
+            {MultisigVersion.V2, 50100000001L}
         };
     }
 }
