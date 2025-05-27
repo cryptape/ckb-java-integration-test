@@ -15,6 +15,7 @@ import org.nervos.ckb.sign.TransactionWithScriptGroups;
 import org.nervos.ckb.sign.signer.Secp256k1Blake160MultisigAllSigner;
 import org.nervos.ckb.transaction.CkbTransactionBuilder;
 import org.nervos.ckb.transaction.TransactionBuilderConfiguration;
+import org.nervos.ckb.type.EntryCompleted;
 import org.nervos.ckb.type.MultisigVersion;
 import org.nervos.ckb.type.OutputsValidator;
 import org.nervos.ckb.type.Script;
@@ -62,12 +63,12 @@ public class MultisigTest extends BeforeSuite {
         signer.signTransaction(txWithGroups, new Context("0x4fd809631a6aa6e3bb378dd65eae5d71df895a82c91a615a1e8264741515c79c", multisigScript));
         signer.signTransaction(txWithGroups, new Context("0x7438f7b35c355e3d2fb9305167a31a72d22ddeafb80a21cc99ff6329d92e8087", multisigScript));
 
-        byte[] txHash = apiService.testTxPoolAccept(txWithGroups.getTxView(), OutputsValidator.PASSTHROUGH);
-        String txHashHex = Numeric.toHexString(txHash);
-        System.out.println("Transaction hash: " + txHashHex);
-        
+        EntryCompleted result = apiService.testTxPoolAccept(txWithGroups.getTxView(), OutputsValidator.PASSTHROUGH);
+        System.out.println("cycles: " + result.cycles);
+        System.out.println("fee:" + result.fee);
         // 验证交易哈希不为空
-        Assert.assertNotNull("交易哈希不应为空", txHash);
+        Assert.assertNotNull("cycles is not null", result.cycles);
+        Assert.assertNotNull("fee is not null", result.fee);
     }
 
     @DataProvider(name = "getMultisigVersions")
