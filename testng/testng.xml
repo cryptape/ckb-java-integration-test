@@ -10,7 +10,6 @@
             <class name="feature.rpc.v0106.estimateCyclesTest"/>
             <class name="feature.rpc.v0106.getBlockByNumberTest"/>
             <class name="feature.rpc.v0106.getBlockTest"/>
-            <class name="feature.rpc.v0106.getFeeRateStaticsTest"/>
             <class name="feature.rpc.v0106.getTransactionTest"/>
             <class name="feature.rpc.v0107.getTransactionAndWitnessProof"></class>
             <class name="feature.rpc.v0107.verifyTransactionAndWitnessProof"></class>
