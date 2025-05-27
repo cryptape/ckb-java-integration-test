@@ -20,7 +20,6 @@ import org.nervos.ckb.type.MultisigVersion;
 import org.nervos.ckb.type.OutputsValidator;
 import org.nervos.ckb.type.Script;
 import org.nervos.ckb.type.TransactionInput;
-import org.nervos.ckb.utils.Numeric;
 import org.nervos.ckb.utils.address.Address;
 import org.nervos.ckb.transaction.InputIterator;
 import org.testng.annotations.DataProvider;
