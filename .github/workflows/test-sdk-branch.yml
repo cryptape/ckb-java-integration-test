@@ -39,7 +39,7 @@ jobs:
         ./gradlew clean :ckb:shadowJar
         cd ..
         
-    - name: 运行测试
+    - name: 运行测试.github/workflows/maven.yml 
       run: sh prepare.sh && mvn clean test -Dmaven.test.failure.ignore=true
       continue-on-error: true
       
