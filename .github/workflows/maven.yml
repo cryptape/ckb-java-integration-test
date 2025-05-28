@@ -26,10 +26,6 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
-
-    - name: Run tests
-      run:
-          sh prepare.sh && mvn clean test -Dmaven.test.failure.ignore=true
         
     - name: Clone SDK repository
       run: |
