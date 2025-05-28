@@ -33,6 +33,9 @@ public class BeforeSuite {
 
     public static String GW_TESTNET_V1;
 
+
+    public static String CKB_RPC_MOCK;
+
     //获取配置文件内的参数
     static {
         ResourceBundle resource = ResourceBundle.getBundle("service_node");
@@ -46,6 +49,7 @@ public class BeforeSuite {
         INDEXER_URL = resource.getString("INDEXER_URL");
         MERCURY_URL = resource.getString("MERCURY_URL");
         CKB_DEVNET = resource.getString("CKB_DEVNET");
+        CKB_RPC_MOCK = resource.getString("CKB_RPC_MOCK");
     }
     public static Api getApi(String rpcUrl, boolean isDebug){
         return new Api(new RpcService(rpcUrl, isDebug));
