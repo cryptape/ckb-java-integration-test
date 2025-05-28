@@ -1,0 +1,50 @@
+# 专门用于测试临时CKB SDK分支的工作流
+
+name: Test SDK Branch
+
+on:
+  # 手动触发工作流
+  workflow_dispatch:
+    inputs:
+      sdk_repo:
+        description: 'SDK仓库地址'
+        required: true
+        default: 'https://github.com/eval-exec/ckb-sdk-java.git'
+      sdk_branch:
+        description: 'SDK分支名称'
+        required: true
+        default: 'exec/fix-multisig'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 检出集成测试代码
+      uses: actions/checkout@v3
+
+    - name: 设置JDK 11
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+        cache: maven
+        
+    - name: 克隆SDK仓库
+      run: |
+        git clone ${{ github.event.inputs.sdk_repo }} -b ${{ github.event.inputs.sdk_branch }} ckb-sdk-java
+        
+    - name: 构建SDK jar包
+      run: |
+        cd ckb-sdk-java
+        ./gradlew clean :ckb:shadowJar
+        cd ..
+        
+    - name: 运行测试
+      run: mvn clean test -Dmaven.test.failure.ignore=true
+      
+    - name: 上传测试报告
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: allure-results
+        path: allure-results/
