@@ -27,16 +27,6 @@ jobs:
         distribution: 'temurin'
         cache: maven
         
-    - name: Clone SDK repository
-      run: |
-        git clone https://github.com/eval-exec/ckb-sdk-java.git -b exec/fix-multisig
-        
-    - name: Build SDK jar
-      run: |
-        cd ckb-sdk-java
-        ./gradlew clean :ckb:shadowJar
-        cd ..
-        
     - name: Run Test
       if: always()
       run: sh prepare.sh && mvn clean test -Dmaven.test.failure.ignore=true
