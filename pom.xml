@@ -30,6 +30,12 @@
             <version>4.0.0-alpha</version>
         </dependency>
         <dependency>
+            <groupId>org.nervos.ckb</groupId>
+            <artifactId>core</artifactId>
+            <version>4.0.0-alpha</version>
+        </dependency>
+        
+        <dependency>
             <groupId>cn.afterturn</groupId>
             <artifactId>easypoi-base</artifactId>
             <version>4.4.0</version>
