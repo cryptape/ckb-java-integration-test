@@ -23,15 +23,18 @@
     </properties>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.nervos.ckb/ckb -->
-        <!-- 替换现有的system scope依赖 -->
+        <!-- 使用Maven仓库中的ckb-sdk-java 4.0.0版本 -->
         <dependency>
             <groupId>org.nervos.ckb</groupId>
             <artifactId>ckb</artifactId>
-            <version>3.0.1</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/ckb-sdk-java/ckb/build/libs/ckb-3.0.1-all.jar</systemPath>
+            <version>4.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.nervos.ckb</groupId>
+            <artifactId>core</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+        
         <dependency>
             <groupId>cn.afterturn</groupId>
             <artifactId>easypoi-base</artifactId>
