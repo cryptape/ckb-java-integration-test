@@ -23,16 +23,16 @@
     </properties>
 
     <dependencies>
-        <!-- 使用Maven仓库中的ckb-sdk-java 4.0.0-alpha版本 -->
+        <!-- 使用Maven仓库中的ckb-sdk-java 4.0.0版本 -->
         <dependency>
             <groupId>org.nervos.ckb</groupId>
             <artifactId>ckb</artifactId>
-            <version>4.0.0-alpha</version>
+            <version>4.0.0</version>
         </dependency>
         <dependency>
             <groupId>org.nervos.ckb</groupId>
             <artifactId>core</artifactId>
-            <version>4.0.0-alpha</version>
+            <version>4.0.0</version>
         </dependency>
         
         <dependency>
